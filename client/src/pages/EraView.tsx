@@ -9,6 +9,11 @@ import { DeviceCard } from "@/components/DeviceCard";
 import { ChoiceScenario } from "@/components/ChoiceScenario";
 import { SequencingPuzzle } from "@/components/SequencingPuzzle";
 import { ParameterSlider } from "@/components/ParameterSlider";
+import { FoundationsVisual } from "@/components/ethical-visuals/FoundationsVisual";
+import { ImplantablesVisual } from "@/components/ethical-visuals/ImplantablesVisual";
+import { ImagingRoboticsVisual } from "@/components/ethical-visuals/ImagingRoboticsVisual";
+import { WearablesVisual } from "@/components/ethical-visuals/WearablesVisual";
+import { AIFutureVisual } from "@/components/ethical-visuals/AIFutureVisual";
 import { eras } from "@shared/schema";
 import { ArrowLeft, CheckCircle2, Microscope, Zap, Bot, Watch, Dna } from "lucide-react";
 
@@ -225,18 +230,41 @@ export default function EraView() {
 
         <Separator className="my-12" />
 
-        {/* Ethical Question */}
+        {/* Ethical Reflection with Interactive Visuals */}
         <div className="mb-12">
           <h2 className="font-grotesk font-bold text-2xl md:text-3xl mb-6">
             Ethical Reflection
           </h2>
-          <ChoiceScenario
-            title="Consider This..."
-            description={era.ethicalQuestion.question}
-            choices={era.ethicalQuestion.choices}
-            onChoice={handleEthicalChoice}
-            selectedChoice={hasChoice}
-          />
+          {era.id === "foundations" && (
+            <FoundationsVisual
+              onChoice={handleEthicalChoice}
+              selectedChoice={hasChoice}
+            />
+          )}
+          {era.id === "implantables" && (
+            <ImplantablesVisual
+              onChoice={handleEthicalChoice}
+              selectedChoice={hasChoice}
+            />
+          )}
+          {era.id === "imaging-robotics" && (
+            <ImagingRoboticsVisual
+              onChoice={handleEthicalChoice}
+              selectedChoice={hasChoice}
+            />
+          )}
+          {era.id === "wearables" && (
+            <WearablesVisual
+              onChoice={handleEthicalChoice}
+              selectedChoice={hasChoice}
+            />
+          )}
+          {era.id === "ai-future" && (
+            <AIFutureVisual
+              onChoice={handleEthicalChoice}
+              selectedChoice={hasChoice}
+            />
+          )}
         </div>
 
         {/* Next Era Button */}

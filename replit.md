@@ -35,7 +35,12 @@ Static website built with React + Vite, deployable to GitHub Pages
 
 ### Key Components
 - **DeviceCard**: Expandable device cards with interactions (sliders, toggles, comparisons)
-- **ChoiceScenario**: Multiple choice questions with outcome reveals
+- **Ethical Visuals**: Interactive visual diagrams for ethical reflections (5 unique components per era)
+  - **FoundationsVisual**: Radiation risk gauge with animated meter
+  - **ImplantablesVisual**: Body diagram with device size/battery life trade-offs
+  - **ImagingRoboticsVisual**: Cost-benefit matrix visualization
+  - **WearablesVisual**: Privacy vs savings data flow diagram
+  - **AIFutureVisual**: Neural network transparency visualization
 - **SequencingPuzzle**: Drag-and-drop ordering game
 - **ParameterSlider**: Interactive value adjustment with safe zones
 - **ProgressTracker**: Visual progress bar across all pages
