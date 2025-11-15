@@ -114,7 +114,7 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Mission: Surgical precision vs. cost choice
 - Ethics: Expensive imaging vs. resource allocation
 
-### Era 4: Wearables (2000s-2010s)
+### Era 4: Wearables (2000s-2020s)
 - CGM, **Insulet Omnipod® Insulin Pump**, Smart Inhaler, Fitness Tracker
 - Mission: Insulin dosing slider
 - Ethics: Data privacy vs. insurance benefits
