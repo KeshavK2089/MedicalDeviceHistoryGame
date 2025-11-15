@@ -1,0 +1,761 @@
+Project: Interactive Medical Device Journey Game Website
+Target Platform: Static site (GitHub Pages)
+Agent Environment: Replit AI agent (you are the developer + project manager)
+
+1. Your Role & Overall Objective
+You are an AI coding agent running in Replit.
+Your job is to design, build, and ship a fully working, static website that feels like:
+
+A narrative game / journey through the evolution of medical device technology
+(from early tools to today’s AI-driven devices and speculative future tech)
+
+The final deliverable must be:
+
+
+Visually stunning, “next-generation” and creative
+
+
+Interactive and gamified, not just a scrolling article
+
+
+Fully static and deployable on GitHub Pages via a GitHub repository
+
+
+
+2. Tech Stack & Project Setup
+You must:
+
+
+Use a static front-end stack compatible with GitHub Pages:
+
+
+Option A: Vanilla HTML + CSS + JavaScript (modular JS)
+
+
+Option B: React + Vite (or similar) with a static export, producing a final dist folder
+
+
+
+
+No backend services or databases.
+
+
+All state is handled client-side (JavaScript, localStorage, etc.)
+
+
+
+
+Repository setup:
+
+
+Initialize a Git repository in Replit.
+
+
+Create a clear project structure (see Section 10).
+
+
+Connect to GitHub.
+
+
+Push the code to a new public repo (name suggestion: medical-device-journey-game).
+
+
+
+
+GitHub Pages compatibility:
+
+
+Ensure final compiled/static files are served from:
+
+
+Either the root (/) of the main branch
+
+
+Or a /docs folder
+
+
+
+
+Confirm that all asset paths are relative and work on GitHub Pages.
+
+
+
+
+
+3. High-Level Concept & Tone
+Design the experience as an immersive journey with game-like elements:
+
+
+The user is a “Time-Traveling Bioengineer” guided by an in-universe AI assistant.
+
+
+They travel across eras of medical device innovation, making choices, solving small challenges, and unlocking content.
+
+
+The tone:
+
+
+Curious, futuristic, playful but accurate
+
+
+Emphasize engineering, problem-solving, and patient impact.
+
+
+
+
+
+4. Core Features & Game Mechanics
+4.1 Narrative Structure (Eras / Levels)
+Create at least 5 core eras, each treated like a “level”:
+
+
+Foundations Era – Early diagnostics and tools
+
+
+Examples: stethoscope, X-ray, basic prosthetics
+
+
+
+
+Implantables Era – Pacemakers & life-sustaining devices
+
+
+Focus: cardiac pacemakers, early implanted devices
+
+
+
+
+Imaging & Robotics Era
+
+
+MRI/CT, surgical robots, endoscopy
+
+
+
+
+Wearables & Home Monitoring Era
+
+
+Insulin pumps, CGMs, wearables, smart inhalers
+
+
+
+
+AI & Future Era
+
+
+AI-driven decision support, smart implants, closed-loop systems, speculative near-future concepts
+
+
+
+
+For each era:
+
+
+Short intro cinematic-style text (e.g., animated typewriter effect).
+
+
+A core “mission” (small interactive task).
+
+
+Key device cards (see 4.3).
+
+
+Ethical or design question with user choice.
+
+
+4.2 Progression & State
+Implement a simple progression system:
+
+
+Track which eras are unlocked/completed.
+
+
+Use localStorage to remember progress between visits.
+
+
+Unlock later eras only after completing earlier ones (configurable).
+
+
+Visualize progress:
+
+
+A timeline or stellar map where completed eras glow or change style.
+
+
+A “completion %” indicator.
+
+
+4.3 Interactive Device Cards
+For each era, define at least 3 device “cards”:
+Each device card should:
+
+
+Show device name, era, and category (diagnostic, therapeutic, monitoring, etc.).
+
+
+On click, expand into:
+
+
+Very short story / problem it solves
+
+
+Core engineering concept(s) (high-level)
+
+
+Risk/Ethical consideration (brief)
+
+
+Fun small interaction (example):
+
+
+Slider comparing “before vs after” patient outcome
+
+
+Toggle to see failure modes vs mitigations
+
+
+Mini diagram with hover tooltips
+
+
+
+
+
+
+4.4 Game-like Interactions
+Include at least 3 distinct, reusable interaction types, for example:
+
+
+Choice-based scenarios
+
+
+The user picks a design decision (e.g., maximize battery life vs device size); show different outcomes.
+
+
+
+
+Puzzle or sequencing mini-game
+
+
+E.g., drag-and-drop the steps of device development (concept → prototyping → bench testing → clinical trials → post-market surveillance).
+
+
+
+
+Simulation-lite slider
+
+
+A slider controlling a parameter (like flow rate or insulin delivery) to keep a “virtual patient” in a safe range.
+
+
+
+
+All of these must be implementable with front-end JS only.
+
+5. Pages / Screens & Navigation
+5.1 Landing Screen
+
+
+Visual: Cosmic / futuristic lab interface with a central “portal” or “time engine.”
+
+
+Elements:
+
+
+Title (e.g., “Chronicles of the Machine: A Journey Through Medical Devices”).
+
+
+One-sentence pitch.
+
+
+“Begin Journey” primary CTA button.
+
+
+“Skip to Timeline” secondary CTA.
+
+
+
+
+5.2 Hub / Timeline Screen
+
+
+A map of eras (horizontal timeline, or orbiting planets, or vertical “neural spine” of eras).
+
+
+Each era represented by:
+
+
+Icon + name.
+
+
+Locked/unlocked state.
+
+
+
+
+Clicking an era opens that era’s “Level Screen.”
+
+
+5.3 Era Level Screen (Template)
+All eras share the same layout template with different data:
+
+
+Animated intro text section.
+
+
+Device card grid.
+
+
+One core interactive “mission.”
+
+
+A reflection question or choice.
+
+
+A “Continue / back to map” button.
+
+
+5.4 Lab / Sandbox Screen (Optional but Preferred)
+
+
+A special screen where users:
+
+
+Mix different “tech building blocks” (e.g., sensor + actuator + algorithm) to get a fictional device.
+
+
+Display a fun generated name and short blurb for that combo.
+
+
+
+
+5.5 About & Credits
+
+
+Brief “about this project” text.
+
+
+Credit the concept as created for an interactive learning experience about medical devices.
+
+
+No personal contact info required unless added by the user later (leave placeholder).
+
+
+
+6. Visual Design & UX Requirements
+
+
+Overall Feel:
+
+
+Futuristic, UI-like interface
+
+
+Subtle gradients, glows, and layering.
+
+
+Use a consistent design system (spacing, font sizes, radius, shadows).
+
+
+
+
+Theme:
+
+
+Default to dark mode with high-contrast text.
+
+
+Consider a subtle accent color palette (e.g., teal, purple, cyan) but keep accessibility in mind.
+
+
+
+
+Responsiveness:
+
+
+Fully responsive for:
+
+
+Mobile (narrow phones)
+
+
+Tablets
+
+
+Desktop
+
+
+
+
+Use flexbox/grid layouts.
+
+
+
+
+Accessibility:
+
+
+Semantic HTML (proper headings, landmark elements).
+
+
+Keyboard navigable for all interactive elements.
+
+
+Sufficient color contrast.
+
+
+ARIA labels where needed (especially on custom components).
+
+
+
+
+Animations & Motion:
+
+
+Use CSS transitions / keyframes and/or lightweight JS.
+
+
+Include:
+
+
+Smooth section transitions.
+
+
+Hover effects on cards.
+
+
+A small parallax or scroll-based motion for the timeline (but not janky).
+
+
+
+
+Make motion optional or subtle enough not to overwhelm.
+
+
+
+
+
+7. Content Requirements
+You may fabricate content as long as it is plausible and respectful, and framed clearly as educational/fictional.
+For each era:
+
+
+Intro paragraph (2–4 sentences) describing the context.
+
+
+At least 3 devices with:
+
+
+Name (real or realistic).
+
+
+One-sentence description.
+
+
+Short “Why it mattered” snippet.
+
+
+
+
+One high-level engineering insight, e.g.:
+
+
+Signal processing, closed-loop control, biocompatibility, safety margins.
+
+
+
+
+One ethical question per era, with two or more choices.
+
+
+No medical advice, claims of cure, or instructions for real-life use.
+
+8. Implementation Details
+8.1 Structure & Components
+If using vanilla JS:
+
+
+Organize code into modules:
+
+
+data/eras.js – era and device definitions.
+
+
+components/ – functions that render HTML strings or DOM nodes.
+
+
+state/ – progression and localStorage logic.
+
+
+
+
+If using React:
+
+
+Suggested component structure:
+
+
+<App />
+
+
+<Landing />
+
+
+<Timeline />
+
+
+<EraView />
+
+
+<DeviceCard />
+
+
+<InteractionChoice />
+
+
+<ProgressBar />
+
+
+<LabSandbox />
+
+
+
+
+Maintain global state via React hooks; persist key state to localStorage.
+
+
+8.2 State & Storage
+
+
+Use localStorage keys like:
+
+
+mdj_progress (stores completed eras and current era).
+
+
+
+
+On load, hydrate UI from stored state.
+
+
+8.3 No External API Dependencies
+
+
+All content and logic must be self-contained, without calling remote APIs.
+
+
+Local assets (images, SVGs, icons) should be stored in the repo.
+
+
+
+9. Performance, SEO & Code Quality
+
+
+Performance:
+
+
+Optimize images (use modern formats, reasonable resolutions).
+
+
+Avoid heavy libraries unless truly beneficial.
+
+
+Minify/optimize production build.
+
+
+
+
+SEO Basics:
+
+
+<title>, <meta name="description">.
+
+
+Meaningful <h1>, <h2>, etc.
+
+
+Descriptive alt text for images.
+
+
+
+
+Code Quality:
+
+
+Clean, well-commented code.
+
+
+No dead/unreferenced files.
+
+
+Use consistent naming conventions.
+
+
+
+
+
+10. Repository Structure
+Suggested structure (adapt if using a framework):
+For vanilla HTML/CSS/JS:
+
+
+/index.html
+
+
+/assets/
+
+
+/images/
+
+
+/icons/
+
+
+
+
+/css/
+
+
+styles.css
+
+
+
+
+/js/
+
+
+main.js
+
+
+data.js
+
+
+state.js
+
+
+components/ (if desired)
+
+
+
+
+/README.md
+
+
+For React + Vite (or similar):
+
+
+/index.html (or framework equivalent)
+
+
+/src/
+
+
+main.jsx or main.tsx
+
+
+App.jsx
+
+
+components/
+
+
+data/
+
+
+styles/
+
+
+
+
+/public/ for static assets
+
+
+Build output directory (/dist) configured for Pages
+
+
+Ensure the deployed version on GitHub Pages serves the fully working site.
+
+11. GitHub Pages Deployment Tasks
+You must:
+
+
+Create and push to GitHub repo from Replit.
+
+
+Configure GitHub Pages:
+
+
+Source: main branch, root or /docs (or gh-pages branch if using a deploy script).
+
+
+
+
+Ensure:
+
+
+index.html is at the correct path.
+
+
+All asset paths work in the GitHub Pages environment.
+
+
+
+
+Update the README.md with:
+
+
+Project description.
+
+
+Live URL (GitHub Pages link).
+
+
+Basic “how to run locally” instructions.
+
+
+
+
+
+12. Final Deliverables Checklist
+Before you consider the project complete, verify that:
+
+
+ The site is live on GitHub Pages and fully functional.
+
+
+ Landing → Timeline → Era views → Interactions all work.
+
+
+ Progress persists via localStorage.
+
+
+ At least 5 eras are implemented with device cards and interactions.
+
+
+ At least 3 distinct interactive mechanics exist (choices, puzzle, slider/sim, etc.).
+
+
+ The site is responsive (tested on mobile and desktop viewports).
+
+
+ Dark theme, animations, and visuals match a futuristic, “out-of-this-world” experience.
+
+
+ Code is organized and readable.
+
+
+ README includes instructions and live link.
+
+
+
+If you (the AI agent) need to make assumptions, do so in a way that:
+
+
+Keeps the site educational, engaging, and respectful.
+
+
+Keeps everything static and GitHub Pages–friendly.
+
+
+Maximizes creativity and interactivity within these constraints.
+
