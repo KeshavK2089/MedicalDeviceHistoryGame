@@ -98,11 +98,10 @@ Static website built with React + Vite, deployable to GitHub Pages
 
 ## Content (V2.0 - Personalized with Real-World Experience)
 
-### Era 1: Foundations (1800s-1900s)
-- Stethoscope, X-Ray, Thermometer, Blood Pressure Cuff, **Pharmaceutical Analytical Testing (UPLC/HPLC - Acorda Therapeutics)**
+### Era 1: Foundations (1800s-1920s)
+- Stethoscope, X-Ray, Thermometer, Blood Pressure Cuff
 - Mission: Device development sequencing
 - Ethics: Radiation safety vs. diagnostic benefit
-- **Real-world insight**: Acorda pharmaceutical development with GMP/GDP protocols, biocompatibility testing, and market validation studies
 
 ### Era 2: Implantables (1960s-1980s)
 - Pacemaker, Hip Replacement, Cochlear Implant, ICD
@@ -110,9 +109,10 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Ethics: Battery life vs. device size trade-offs
 
 ### Era 3: Imaging & Robotics (1980s-2000s)
-- MRI, Surgical Robot, Endoscope, CT Scanner
+- MRI, Surgical Robot, Endoscope, CT Scanner, **Pharmaceutical Analytical Testing (HPLC/UPLC - Acorda Therapeutics)**
 - Mission: Surgical precision vs. cost choice
 - Ethics: Expensive imaging vs. resource allocation
+- **Real-world insight**: HPLC (1966-1967 invention), UPLC (2004), Acorda pharmaceutical development with GMP/GDP protocols, biocompatibility testing, and market validation studies
 
 ### Era 4: Wearables (2000s-2020s)
 - CGM, **Insulet Omnipod® Insulin Pump**, Smart Inhaler, Fitness Tracker
@@ -125,7 +125,8 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Mission: AI transparency vs. accuracy choice
 - Ethics: Cloud processing vs. local privacy
 - **Real-world insights**: 
-  - Epic Systems Hyperspace EHR workflow optimization (300+ decisions, 18 IT analysts, 26 clinical leaders)
+  - Epic Systems founded by Judy Faulkner in 1979, grew from Madison basement to 325+ million patient records
+  - Epic Hyperspace EHR workflow optimization (300+ decisions, 18 IT analysts, 26 clinical leaders)
   - Northeastern NIH 3T3 fibroblast modification for 25% improved wound healing
 
 ## User Journey

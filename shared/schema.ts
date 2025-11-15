@@ -117,18 +117,6 @@ export const eras: Era[] = [
         interactionType: "comparison",
         beforeStat: "Hypertension invisible, often fatal",
         afterStat: "Quantitative pressure monitoring"
-      },
-      {
-        id: "pharmaceutical-analyzer",
-        name: "Pharmaceutical Analytical Testing (UPLC/HPLC)",
-        category: "diagnostic",
-        tagline: "Molecular precision for drug development",
-        problem: "Drug formulations require precise characterization to ensure safety, efficacy, and stability. Without analytical validation, pharmaceutical products cannot meet regulatory standards or reach patients.",
-        engineering: "Ultra-Performance Liquid Chromatography (UPLC) and High-Performance Liquid Chromatography (HPLC) separate drug compounds and measure their properties with molecular precision. Spray-dried formulations are analyzed for powder stability, biocompatibility, and compatibility. GMP/GDP laboratory protocols ensure reproducible results. ACI-8 analysis characterizes formulation properties to guide development decisions. Real-world experience: Acorda Therapeutics (2022) demonstrated that analytical development is critical for pharmaceutical launches - from market validation studies to MannKind collaboration biocompatibility testing.",
-        ethics: "Rigorous testing delays drug availability but ensures patient safety. How do we balance speed-to-market with thoroughness in life-saving therapeutics?",
-        interactionType: "slider",
-        beforeStat: "Unknown drug properties, regulatory uncertainty",
-        afterStat: "Molecularly characterized, validated formulations"
       }
     ],
     mission: {
@@ -316,6 +304,18 @@ export const eras: Era[] = [
         interactionType: "slider",
         beforeStat: "2D X-ray shadows only",
         afterStat: "3D reconstructed anatomy"
+      },
+      {
+        id: "pharmaceutical-analyzer",
+        name: "Pharmaceutical Analytical Testing (HPLC/UPLC)",
+        category: "diagnostic",
+        tagline: "Molecular precision for drug development",
+        problem: "Drug formulations require precise characterization to ensure safety, efficacy, and stability. Without analytical validation, pharmaceutical products cannot meet regulatory standards or reach patients.",
+        engineering: "High-Performance Liquid Chromatography (HPLC), developed in 1966-1967, revolutionized pharmaceutical analysis by separating drug compounds with molecular precision. Modern Ultra-Performance Liquid Chromatography (UPLC, introduced 2004) achieves 10x faster analysis with sub-2-micron particles. Spray-dried formulations are analyzed for powder stability, biocompatibility, and compatibility. GMP/GDP laboratory protocols ensure reproducible results. ACI-8 analysis characterizes formulation properties to guide development decisions. Real-world experience: Acorda Therapeutics (2022) demonstrated that analytical development is critical for pharmaceutical launches - from market validation studies to MannKind collaboration biocompatibility testing.",
+        ethics: "Rigorous testing delays drug availability but ensures patient safety. How do we balance speed-to-market with thoroughness in life-saving therapeutics?",
+        interactionType: "slider",
+        beforeStat: "Unknown drug properties, regulatory uncertainty",
+        afterStat: "Molecularly characterized, validated formulations"
       }
     ],
     mission: {
@@ -471,7 +471,7 @@ export const eras: Era[] = [
         category: "diagnostic",
         tagline: "Pattern recognition meets clinical workflow",
         problem: "Radiologists and pathologists face overwhelming workloads and rare conditions are easily missed. Human pattern recognition has limits. Meanwhile, fragmented healthcare IT systems create inefficiencies across surgery, anesthesia, and clinical workflows.",
-        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision. Integration with Electronic Health Record (EHR) systems enables seamless data flow - Epic Systems' Hyperspace platform connects 300+ workflow optimization decisions across clinical specialties, reducing surgery times and improving patient outcomes through hybrid workflow design.",
+        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision. Integration with Electronic Health Record (EHR) systems enables seamless data flow - Epic Systems, founded by Judy Faulkner in 1979 in a Madison basement, grew from a single computer to managing 325+ million patient records. The Hyperspace platform connects 300+ workflow optimization decisions across clinical specialties, reducing surgery times and improving patient outcomes through hybrid workflow design.",
         ethics: "AI can perpetuate biases in training data and make inscrutable 'black box' decisions. How do we ensure fairness and accountability? Real-world experience: Epic Systems (2024-2025) demonstrated that managing 18 IT analysts and 26 clinical leaders requires balancing technology capabilities with human expertise. Client-facing presentations and agile methodologies ensure stakeholder consensus on design decisions.",
         interactionType: "comparison",
         beforeStat: "10% of cancers missed, fragmented workflows",
