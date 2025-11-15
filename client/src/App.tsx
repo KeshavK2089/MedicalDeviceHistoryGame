@@ -8,6 +8,7 @@ import Timeline from "@/pages/Timeline";
 import EraView from "@/pages/EraView";
 import LabSandbox from "@/pages/LabSandbox";
 import About from "@/pages/About";
+import Achievements from "@/pages/Achievements";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/era/:slug" component={EraView} />
       <Route path="/lab" component={LabSandbox} />
       <Route path="/about" component={About} />
+      <Route path="/achievements" component={Achievements} />
       <Route component={NotFound} />
     </Switch>
   );

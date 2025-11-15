@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { type ProgressData, eras } from '@shared/schema';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { type ProgressData, eras, achievements } from '@shared/schema';
 
 const STORAGE_KEY = 'mdj_progress';
 
@@ -7,7 +7,11 @@ const defaultProgress: ProgressData = {
   completedEras: [],
   currentEra: 'foundations',
   eraChoices: {},
-  lastVisited: new Date().toISOString()
+  lastVisited: new Date().toISOString(),
+  unlockedAchievements: [],
+  missionAttempts: {},
+  eraStartTimes: {},
+  eraCompletionDurations: {}
 };
 
 export function useProgress() {
@@ -18,7 +22,15 @@ export function useProgress() {
     if (stored) {
       try {
         const parsed = JSON.parse(stored);
-        setProgress(parsed);
+        // Merge with defaults to handle missing fields from old saves
+        setProgress({
+          ...defaultProgress,
+          ...parsed,
+          unlockedAchievements: parsed.unlockedAchievements || [],
+          missionAttempts: parsed.missionAttempts || {},
+          eraStartTimes: parsed.eraStartTimes || {},
+          eraCompletionDurations: parsed.eraCompletionDurations || {}
+        });
       } catch (e) {
         console.error('Failed to parse progress:', e);
       }
@@ -40,9 +52,17 @@ export function useProgress() {
   const completeEra = useCallback((eraId: string) => {
     setProgress((currentProgress) => {
       if (!currentProgress.completedEras.includes(eraId)) {
+        // Calculate completion duration if start time exists
+        const startTime = currentProgress.eraStartTimes?.[eraId];
+        const duration = startTime ? Date.now() - startTime : undefined;
+        
         const updated = {
           ...currentProgress,
           completedEras: [...currentProgress.completedEras, eraId],
+          eraCompletionDurations: {
+            ...(currentProgress.eraCompletionDurations || {}),
+            ...(duration ? { [eraId]: duration } : {})
+          },
           lastVisited: new Date().toISOString()
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
@@ -96,6 +116,85 @@ export function useProgress() {
     setProgress(defaultProgress);
   }, []);
 
+  const recordMissionAttempt = useCallback((eraId: string) => {
+    setProgress((currentProgress) => {
+      const attempts = currentProgress.missionAttempts || {};
+      const currentAttempts = attempts[eraId] || 0;
+      const updated = {
+        ...currentProgress,
+        missionAttempts: {
+          ...attempts,
+          [eraId]: currentAttempts + 1
+        },
+        lastVisited: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const recordEraStart = useCallback((eraId: string) => {
+    setProgress((currentProgress) => {
+      // Only record if not already started
+      if (!currentProgress.eraStartTimes?.[eraId]) {
+        const updated = {
+          ...currentProgress,
+          eraStartTimes: {
+            ...(currentProgress.eraStartTimes || {}),
+            [eraId]: Date.now()
+          },
+          lastVisited: new Date().toISOString()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+        return updated;
+      }
+      return currentProgress;
+    });
+  }, []);
+
+  const checkAndUnlockAchievements = useCallback(() => {
+    setProgress((currentProgress) => {
+      const unlockedIds = currentProgress.unlockedAchievements || [];
+      const newAchievements = achievements.filter(
+        achievement => 
+          !unlockedIds.includes(achievement.id) &&
+          achievement.condition(currentProgress)
+      ).map(a => a.id);
+
+      if (newAchievements.length > 0) {
+        const updated = {
+          ...currentProgress,
+          unlockedAchievements: [
+            ...unlockedIds,
+            ...newAchievements
+          ],
+          lastVisited: new Date().toISOString()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+        return updated;
+      }
+      return currentProgress;
+    });
+  }, []);
+
+  useEffect(() => {
+    checkAndUnlockAchievements();
+  }, [progress.completedEras.length, progress.eraChoices, checkAndUnlockAchievements]);
+
+  const unlockedAchievementsList = useMemo(() => {
+    const unlocked = progress.unlockedAchievements || [];
+    return achievements.filter(a => 
+      unlocked.includes(a.id)
+    );
+  }, [progress.unlockedAchievements]);
+
+  const lockedAchievementsList = useMemo(() => {
+    const unlocked = progress.unlockedAchievements || [];
+    return achievements.filter(a => 
+      !unlocked.includes(a.id)
+    );
+  }, [progress.unlockedAchievements]);
+
   const completionPercentage = Math.round(
     (progress.completedEras.length / eras.length) * 100
   );
@@ -107,6 +206,11 @@ export function useProgress() {
     setCurrentEra,
     isEraUnlocked,
     resetProgress,
+    recordMissionAttempt,
+    recordEraStart,
+    checkAndUnlockAchievements,
+    unlockedAchievementsList,
+    lockedAchievementsList,
     completionPercentage
   };
 }

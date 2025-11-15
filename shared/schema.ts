@@ -39,11 +39,24 @@ export interface Era {
   };
 }
 
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  category: "completion" | "speed" | "ethics" | "special";
+  condition: (progress: Progress) => boolean;
+}
+
 export interface Progress {
   completedEras: string[];
   currentEra: string | null;
   eraChoices: Record<string, string>;
   lastVisited: string;
+  unlockedAchievements: string[];
+  missionAttempts: Record<string, number>;
+  eraStartTimes: Record<string, number>;
+  eraCompletionDurations?: Record<string, number>;
 }
 
 export const eras: Era[] = [
@@ -540,7 +553,123 @@ export const progressSchema = z.object({
   completedEras: z.array(z.string()),
   currentEra: z.string().nullable(),
   eraChoices: z.record(z.string()),
-  lastVisited: z.string()
+  lastVisited: z.string(),
+  unlockedAchievements: z.array(z.string()).default([]),
+  missionAttempts: z.record(z.number()).default({}),
+  eraStartTimes: z.record(z.number()).default({}),
+  eraCompletionDurations: z.record(z.number()).optional()
 });
 
 export type ProgressData = z.infer<typeof progressSchema>;
+
+export const achievements: Achievement[] = [
+  {
+    id: "first-steps",
+    name: "First Steps",
+    description: "Complete your first era",
+    icon: "Award",
+    category: "completion",
+    condition: (progress) => progress.completedEras.length >= 1
+  },
+  {
+    id: "halfway-there",
+    name: "Halfway There",
+    description: "Complete 3 eras",
+    icon: "TrendingUp",
+    category: "completion",
+    condition: (progress) => progress.completedEras.length >= 3
+  },
+  {
+    id: "master-chronicler",
+    name: "Master Chronicler",
+    description: "Complete all 5 eras",
+    icon: "Trophy",
+    category: "completion",
+    condition: (progress) => progress.completedEras.length >= 5
+  },
+  {
+    id: "perfect-sequence",
+    name: "Perfect Sequencer",
+    description: "Complete a sequencing puzzle on first attempt",
+    icon: "Target",
+    category: "speed",
+    condition: (progress) => {
+      return Object.entries(progress.missionAttempts).some(
+        ([eraId, attempts]) => {
+          const era = eras.find(e => e.id === eraId);
+          return era?.mission.type === "sequence" && attempts === 1;
+        }
+      );
+    }
+  },
+  {
+    id: "quick-learner",
+    name: "Quick Learner",
+    description: "Complete an era within 5 minutes of starting it",
+    icon: "Zap",
+    category: "speed",
+    condition: (progress) => {
+      if (!progress.eraCompletionDurations) return false;
+      return Object.values(progress.eraCompletionDurations).some(duration => duration <= 300000);
+    }
+  },
+  {
+    id: "safety-first",
+    name: "Safety First",
+    description: "Choose safety-focused ethical options in 3 eras",
+    icon: "Shield",
+    category: "ethics",
+    condition: (progress) => {
+      const safetyChoices = ["safety", "pause", "wait", "protocol", "refuse", "local"];
+      const safetyCount = Object.values(progress.eraChoices).filter(
+        choice => safetyChoices.includes(choice)
+      ).length;
+      return safetyCount >= 3;
+    }
+  },
+  {
+    id: "innovation-advocate",
+    name: "Innovation Advocate",
+    description: "Choose innovation-focused options in 3 eras",
+    icon: "Lightbulb",
+    category: "ethics",
+    condition: (progress) => {
+      const innovationChoices = ["proceed", "invest", "wireless-charging", "scan", "share", "cloud", "accurate"];
+      const innovationCount = Object.values(progress.eraChoices).filter(
+        choice => innovationChoices.includes(choice)
+      ).length;
+      return innovationCount >= 3;
+    }
+  },
+  {
+    id: "balanced-thinker",
+    name: "Balanced Thinker",
+    description: "Choose middle-ground options in 3 eras",
+    icon: "Scale",
+    category: "ethics",
+    condition: (progress) => {
+      const balancedChoices = ["restrict", "hybrid", "aggregate", "federated", "explainable"];
+      const balancedCount = Object.values(progress.eraChoices).filter(
+        choice => balancedChoices.includes(choice)
+      ).length;
+      return balancedCount >= 3;
+    }
+  },
+  {
+    id: "explorer",
+    name: "Explorer",
+    description: "Visit all available eras",
+    icon: "Compass",
+    category: "special",
+    condition: (progress) => {
+      const visitedEras = new Set([
+        ...progress.completedEras,
+        ...(progress.currentEra ? [progress.currentEra] : [])
+      ]);
+      const unlockedCount = eras.filter((_, index) => 
+        index === 0 || progress.completedEras.length > index
+      ).length;
+      return visitedEras.size >= unlockedCount && unlockedCount >= 3;
+    }
+  }
+];

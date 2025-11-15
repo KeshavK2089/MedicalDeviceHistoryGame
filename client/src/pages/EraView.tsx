@@ -23,7 +23,7 @@ const iconMap: Record<string, any> = {
 export default function EraView() {
   const [, params] = useRoute("/era/:slug");
   const [, setLocation] = useLocation();
-  const { progress, completeEra, saveChoice, setCurrentEra, isEraUnlocked } = useProgress();
+  const { progress, completeEra, saveChoice, setCurrentEra, isEraUnlocked, recordMissionAttempt, recordEraStart } = useProgress();
   const [introVisible, setIntroVisible] = useState(true);
   const [missionComplete, setMissionComplete] = useState(false);
 
@@ -37,6 +37,7 @@ export default function EraView() {
   useEffect(() => {
     if (era) {
       setCurrentEra(era.id);
+      recordEraStart(era.id);
       const completed = progress.completedEras.includes(era.id);
       setMissionComplete(completed);
       
@@ -48,7 +49,7 @@ export default function EraView() {
         setIntroVisible(false);
       }
     }
-  }, [era, progress.completedEras, setCurrentEra]);
+  }, [era, progress.completedEras, setCurrentEra, recordEraStart]);
 
   // Second useEffect - completes era when both conditions are met
   useEffect(() => {
@@ -94,6 +95,12 @@ export default function EraView() {
 
   const handleEthicalChoice = (choiceId: string) => {
     saveChoice(era.id, choiceId);
+  };
+
+  const handleMissionAttempt = () => {
+    if (era) {
+      recordMissionAttempt(era.id);
+    }
   };
 
   const colorClasses = {
@@ -185,6 +192,8 @@ export default function EraView() {
               description={era.mission.description}
               items={era.mission.data.items}
               onComplete={handleMissionComplete}
+              eraId={era.id}
+              onAttempt={handleMissionAttempt}
             />
           )}
           {era.mission.type === "slider" && (
@@ -197,6 +206,8 @@ export default function EraView() {
               initial={era.mission.data.initial}
               unit={era.mission.data.unit}
               onComplete={handleMissionComplete}
+              eraId={era.id}
+              onAttempt={handleMissionAttempt}
             />
           )}
           {era.mission.type === "choice" && (
@@ -206,6 +217,8 @@ export default function EraView() {
               choices={era.mission.data.choices}
               onChoice={handleMissionComplete}
               selectedChoice={missionComplete ? "selected" : undefined}
+              eraId={era.id}
+              onAttempt={handleMissionAttempt}
             />
           )}
         </div>

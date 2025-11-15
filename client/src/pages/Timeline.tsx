@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { useProgress } from "@/hooks/use-progress";
 import { ProgressTracker } from "@/components/ProgressTracker";
 import { eras } from "@shared/schema";
-import { Lock, CheckCircle2, ChevronRight, Home, Info, Microscope, Zap, Bot, Watch, Dna } from "lucide-react";
+import { Lock, CheckCircle2, ChevronRight, Home, Info, Trophy, Microscope, Zap, Bot, Watch, Dna } from "lucide-react";
 
 const iconMap: Record<string, any> = {
   Microscope,
@@ -53,6 +53,14 @@ export default function Timeline() {
               </p>
             </div>
             <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setLocation("/achievements")}
+                data-testid="button-achievements"
+              >
+                <Trophy className="w-4 h-4" />
+              </Button>
               <Button
                 variant="outline"
                 size="sm"

@@ -15,14 +15,17 @@ interface ChoiceScenarioProps {
   choices: Choice[];
   onChoice: (choiceId: string) => void;
   selectedChoice?: string;
+  eraId: string;
+  onAttempt?: () => void;
 }
 
-export function ChoiceScenario({ title, description, choices, onChoice, selectedChoice }: ChoiceScenarioProps) {
+export function ChoiceScenario({ title, description, choices, onChoice, selectedChoice, onAttempt }: ChoiceScenarioProps) {
   const [selected, setSelected] = useState<string | null>(selectedChoice || null);
   const [showOutcome, setShowOutcome] = useState(!!selectedChoice);
 
   const handleChoice = (choiceId: string) => {
     if (selected) return; // Prevent multiple selections
+    if (onAttempt) onAttempt();
     setSelected(choiceId);
     setShowOutcome(true);
     onChoice(choiceId);

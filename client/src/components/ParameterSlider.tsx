@@ -13,6 +13,8 @@ interface ParameterSliderProps {
   initial: number;
   unit: string;
   onComplete: () => void;
+  eraId: string;
+  onAttempt?: () => void;
 }
 
 export function ParameterSlider({ 
@@ -23,7 +25,8 @@ export function ParameterSlider({
   optimal, 
   initial, 
   unit,
-  onComplete 
+  onComplete,
+  onAttempt 
 }: ParameterSliderProps) {
   const [value, setValue] = useState([initial]);
   const [hasCompleted, setHasCompleted] = useState(false);
@@ -47,6 +50,7 @@ export function ParameterSlider({
     
     // Trigger completion when entering optimal range for first time (or after exiting)
     if (!hasCompleted && inRange) {
+      if (onAttempt) onAttempt();
       setHasCompleted(true);
       setTimeout(() => onComplete(), 500);
     }

@@ -14,9 +14,11 @@ interface SequencingPuzzleProps {
   description: string;
   items: SequenceItem[];
   onComplete: () => void;
+  eraId: string;
+  onAttempt?: () => void;
 }
 
-export function SequencingPuzzle({ title, description, items, onComplete }: SequencingPuzzleProps) {
+export function SequencingPuzzle({ title, description, items, onComplete, onAttempt }: SequencingPuzzleProps) {
   const [userOrder, setUserOrder] = useState<SequenceItem[]>([]);
   const [availableItems, setAvailableItems] = useState<SequenceItem[]>([]);
   const [isComplete, setIsComplete] = useState(false);
@@ -42,6 +44,7 @@ export function SequencingPuzzle({ title, description, items, onComplete }: Sequ
     setIsCorrect(correct);
     setIsComplete(true);
     if (correct) {
+      if (onAttempt) onAttempt();
       onComplete();
     }
   };
