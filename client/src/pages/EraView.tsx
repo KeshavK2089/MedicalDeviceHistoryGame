@@ -29,6 +29,11 @@ export default function EraView() {
 
   const era = eras.find(e => e.slug === params?.slug);
 
+  // Derived state - must be before early returns to satisfy hooks rules
+  const isEraComplete = era ? progress.completedEras.includes(era.id) : false;
+  const hasChoice = era ? progress.eraChoices[era.id] : undefined;
+
+  // First useEffect - manages intro and initial mission state
   useEffect(() => {
     if (era) {
       setCurrentEra(era.id);
@@ -45,6 +50,14 @@ export default function EraView() {
     }
   }, [era, progress.completedEras, setCurrentEra]);
 
+  // Second useEffect - completes era when both conditions are met
+  useEffect(() => {
+    if (era && missionComplete && hasChoice && !isEraComplete) {
+      completeEra(era.id);
+    }
+  }, [era, missionComplete, hasChoice, isEraComplete, completeEra]);
+
+  // Early returns after all hooks
   if (!era) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -74,24 +87,14 @@ export default function EraView() {
     );
   }
 
+  // Handler functions - after early returns is OK
   const handleMissionComplete = () => {
     setMissionComplete(true);
-    // Auto-complete era if ethical question already answered
-    if (hasChoice) {
-      completeEra(era.id);
-    }
   };
 
   const handleEthicalChoice = (choiceId: string) => {
     saveChoice(era.id, choiceId);
-    // Complete era if mission is already done
-    if (missionComplete) {
-      completeEra(era.id);
-    }
   };
-
-  const isEraComplete = progress.completedEras.includes(era.id);
-  const hasChoice = progress.eraChoices[era.id];
 
   const colorClasses = {
     cyan: "from-cyan-500/20 via-purple-500/20 to-teal-500/20",

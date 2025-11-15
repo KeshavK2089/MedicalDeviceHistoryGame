@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { type ProgressData, eras } from '@shared/schema';
 
 const STORAGE_KEY = 'mdj_progress';
@@ -25,38 +25,61 @@ export function useProgress() {
     }
   }, []);
 
-  const saveProgress = (newProgress: Partial<ProgressData>) => {
-    const updated = { 
-      ...progress, 
-      ...newProgress,
-      lastVisited: new Date().toISOString()
-    };
-    setProgress(updated);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-  };
-
-  const completeEra = (eraId: string) => {
-    if (!progress.completedEras.includes(eraId)) {
-      saveProgress({
-        completedEras: [...progress.completedEras, eraId]
-      });
-    }
-  };
-
-  const saveChoice = (eraId: string, choiceId: string) => {
-    saveProgress({
-      eraChoices: {
-        ...progress.eraChoices,
-        [eraId]: choiceId
-      }
+  const saveProgress = useCallback((newProgress: Partial<ProgressData>) => {
+    setProgress((currentProgress) => {
+      const updated = { 
+        ...currentProgress, 
+        ...newProgress,
+        lastVisited: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
     });
-  };
+  }, []);
 
-  const setCurrentEra = (eraId: string) => {
-    saveProgress({ currentEra: eraId });
-  };
+  const completeEra = useCallback((eraId: string) => {
+    setProgress((currentProgress) => {
+      if (!currentProgress.completedEras.includes(eraId)) {
+        const updated = {
+          ...currentProgress,
+          completedEras: [...currentProgress.completedEras, eraId],
+          lastVisited: new Date().toISOString()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+        return updated;
+      }
+      return currentProgress;
+    });
+  }, []);
 
-  const isEraUnlocked = (eraId: string) => {
+  const saveChoice = useCallback((eraId: string, choiceId: string) => {
+    setProgress((currentProgress) => {
+      const updated = {
+        ...currentProgress,
+        eraChoices: {
+          ...currentProgress.eraChoices,
+          [eraId]: choiceId
+        },
+        lastVisited: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const setCurrentEra = useCallback((eraId: string) => {
+    setProgress((currentProgress) => {
+      const updated = {
+        ...currentProgress,
+        currentEra: eraId,
+        lastVisited: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const isEraUnlocked = useCallback((eraId: string) => {
     const era = eras.find(e => e.id === eraId);
     if (!era) return false;
     
@@ -66,12 +89,12 @@ export function useProgress() {
     if (!previousEra) return true;
     
     return progress.completedEras.includes(previousEra.id);
-  };
+  }, [progress.completedEras]);
 
-  const resetProgress = () => {
+  const resetProgress = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
     setProgress(defaultProgress);
-  };
+  }, []);
 
   const completionPercentage = Math.round(
     (progress.completedEras.length / eras.length) * 100

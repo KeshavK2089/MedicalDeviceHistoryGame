@@ -120,7 +120,7 @@ export function SequencingPuzzle({ title, description, items, onComplete }: Sequ
         <div className="flex gap-3">
           <Button
             onClick={handleCheck}
-            disabled={userOrder.length !== items.length || isComplete}
+            disabled={userOrder.length !== items.length || isCorrect}
             className="flex-1"
             data-testid="button-check-sequence"
           >
