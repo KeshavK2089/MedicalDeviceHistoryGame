@@ -47,7 +47,7 @@ export default function Landing() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <Button
             size="lg"
-            onClick={() => setLocation("/timeline")}
+            onClick={() => setLocation("/era/foundations")}
             className="group min-w-[200px]"
             data-testid="button-begin-journey"
           >

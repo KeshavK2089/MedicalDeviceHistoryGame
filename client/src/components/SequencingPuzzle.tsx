@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, XCircle, RotateCcw } from "lucide-react";
+import { CheckCircle2, XCircle, RotateCcw, Eye } from "lucide-react";
 
 interface SequenceItem {
   id: string;
@@ -55,6 +55,16 @@ export function SequencingPuzzle({ title, description, items, onComplete, onAtte
     setUserOrder([]);
     setIsComplete(false);
     setIsCorrect(false);
+  };
+
+  const handleShowAnswer = () => {
+    const correctOrder = [...items].sort((a, b) => a.order - b.order);
+    setUserOrder(correctOrder);
+    setAvailableItems([]);
+    setIsCorrect(true);
+    setIsComplete(true);
+    if (onAttempt) onAttempt();
+    onComplete();
   };
 
   return (
@@ -147,22 +157,36 @@ export function SequencingPuzzle({ title, description, items, onComplete, onAtte
             }`}
             data-testid="card-puzzle-result"
           >
-            <div className="flex items-center gap-3">
-              {isCorrect ? (
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-              ) : (
-                <XCircle className="w-5 h-5 text-destructive" />
-              )}
-              <div>
-                <h4 className="font-semibold text-sm">
-                  {isCorrect ? 'Correct!' : 'Not quite right'}
-                </h4>
-                <p className="text-sm text-muted-foreground">
-                  {isCorrect 
-                    ? 'You\'ve mastered the device development pipeline!' 
-                    : 'Try again - the order matters!'}
-                </p>
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                {isCorrect ? (
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                ) : (
+                  <XCircle className="w-5 h-5 text-destructive" />
+                )}
+                <div>
+                  <h4 className="font-semibold text-sm">
+                    {isCorrect ? 'Correct!' : 'Not quite right'}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {isCorrect 
+                      ? 'You\'ve mastered the device development pipeline!' 
+                      : 'Try again - the order matters!'}
+                  </p>
+                </div>
               </div>
+              {!isCorrect && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleShowAnswer}
+                  className="flex items-center gap-2"
+                  data-testid="button-show-answer"
+                >
+                  <Eye className="w-4 h-4" />
+                  Show Answer
+                </Button>
+              )}
             </div>
           </Card>
         )}

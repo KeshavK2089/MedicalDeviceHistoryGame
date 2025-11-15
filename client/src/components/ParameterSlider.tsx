@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, AlertTriangle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, AlertTriangle, Eye } from "lucide-react";
 
 interface ParameterSliderProps {
   title: string;
@@ -30,6 +31,7 @@ export function ParameterSlider({
 }: ParameterSliderProps) {
   const [value, setValue] = useState([initial]);
   const [hasCompleted, setHasCompleted] = useState(false);
+  const [attemptedOnce, setAttemptedOnce] = useState(false);
   const currentValue = value[0];
   
   // Ensure optimal is properly typed as numbers
@@ -43,6 +45,11 @@ export function ParameterSlider({
     
     const inRange = newVal >= optimalMin && newVal <= optimalMax;
     
+    // Mark as attempted once user moves the slider
+    if (!attemptedOnce) {
+      setAttemptedOnce(true);
+    }
+    
     // Reset completion flag if slider exits optimal range
     if (!inRange && hasCompleted) {
       setHasCompleted(false);
@@ -50,6 +57,16 @@ export function ParameterSlider({
     
     // Trigger completion when entering optimal range for first time (or after exiting)
     if (!hasCompleted && inRange) {
+      if (onAttempt) onAttempt();
+      setHasCompleted(true);
+      setTimeout(() => onComplete(), 500);
+    }
+  };
+
+  const handleShowAnswer = () => {
+    const midpoint = Math.floor((optimalMin + optimalMax) / 2);
+    setValue([midpoint]);
+    if (!hasCompleted) {
       if (onAttempt) onAttempt();
       setHasCompleted(true);
       setTimeout(() => onComplete(), 500);
@@ -119,18 +136,32 @@ export function ParameterSlider({
           }`}
           data-testid="card-slider-status"
         >
-          <div className="flex items-center gap-3">
-            <Badge 
-              variant={status.color === "primary" ? "default" : "destructive"}
-              className="uppercase tracking-wide"
-            >
-              {status.label}
-            </Badge>
-            <p className="text-sm text-muted-foreground">
-              {isInRange 
-                ? 'Perfect! You\'ve found the safe zone.' 
-                : 'Adjust the value to reach the optimal range'}
-            </p>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <Badge 
+                variant={status.color === "primary" ? "default" : "destructive"}
+                className="uppercase tracking-wide"
+              >
+                {status.label}
+              </Badge>
+              <p className="text-sm text-muted-foreground">
+                {isInRange 
+                  ? 'Perfect! You\'ve found the safe zone.' 
+                  : 'Adjust the value to reach the optimal range'}
+              </p>
+            </div>
+            {!isInRange && attemptedOnce && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleShowAnswer}
+                className="flex items-center gap-2"
+                data-testid="button-show-answer"
+              >
+                <Eye className="w-4 h-4" />
+                Hint
+              </Button>
+            )}
           </div>
         </Card>
 
