@@ -82,10 +82,14 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Static build outputs to `/dist`
 
 ### GitHub Pages Deployment
-- Vite configured for relative paths
-- Build command: `npm run build`
+- Custom Vite config: `vite.config.gh-pages.ts` with base path `/MedicalDeviceHistoryGame/`
+- Build command: `npx vite build --config vite.config.gh-pages.ts`
 - Output directory: `dist/`
-- Deploy from main branch root or `/docs` folder
+- Automated deployment via GitHub Actions workflow (`.github/workflows/deploy.yml`)
+- `.nojekyll` file included for proper asset loading
+- Repository: `MedicalDeviceHistoryGame`
+- Live URL: `https://USERNAME.github.io/MedicalDeviceHistoryGame/`
+- See `QUICK_DEPLOY_README.md` for 5-minute deployment guide
 
 ## Content
 
@@ -131,10 +135,27 @@ Static website built with React + Vite, deployable to GitHub Pages
 - High contrast text (WCAG AA compliant)
 - Responsive touch targets (min 44px)
 
+## Achievement System (Completed)
+
+### Features
+- 9 total achievements across 3 categories:
+  - **Completion**: First Steps, Halfway There, Master Chronicler
+  - **Speed**: Perfect Sequencer, Quick Learner
+  - **Ethics**: Safety First, Innovation Advocate, Balanced Thinker, Explorer
+
+### Implementation
+- localStorage persistence with `unlockedAchievements` array
+- Mission attempt tracking per era
+- Era completion timing for speed achievements
+- Dedicated `/achievements` page with unlocked/locked sections
+- Trophy button in Timeline header
+- Achievement badge components with category-specific colors
+- Automatic unlock checking via useProgress hook
+
 ## Future Enhancements
 
-- Achievement badges for completing eras
 - Shareable progress cards
+- Device history timeline visualization
 - Additional eras (Regulatory, Personalized Medicine)
 - Audio ambience per era
 - More detailed device interactions
@@ -144,10 +165,20 @@ Static website built with React + Vite, deployable to GitHub Pages
 
 ✅ All 5 eras implemented with devices and missions
 ✅ Progressive unlocking system with localStorage
-✅ Three distinct interactive mechanics
+✅ Three distinct interactive mechanics (sequencing, sliders, choices)
+✅ Achievement system with 9 badges and localStorage tracking
 ✅ Responsive design (mobile, tablet, desktop)
 ✅ Futuristic dark mode theme with animations
 ✅ Lab sandbox for component mixing
 ✅ Comprehensive content (educational + ethical)
+✅ GitHub Pages deployment configured and tested
+✅ Automated CI/CD via GitHub Actions
 
-Ready for testing and deployment to GitHub Pages.
+**Ready for deployment to GitHub Pages!**
+
+## Deployment Files
+- `.github/workflows/deploy.yml` - Automated deployment workflow
+- `vite.config.gh-pages.ts` - Production build configuration
+- `client/public/.nojekyll` - GitHub Pages compatibility
+- `QUICK_DEPLOY_README.md` - 5-minute deployment guide
+- `GITHUB_DEPLOYMENT_GUIDE.md` - Detailed deployment instructions
