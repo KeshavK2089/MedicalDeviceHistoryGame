@@ -109,10 +109,13 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Ethics: Battery life vs. device size trade-offs
 
 ### Era 3: Imaging & Robotics (1980s-2000s)
-- MRI, Surgical Robot, Endoscope, CT Scanner, **Pharmaceutical Analytical Testing (HPLC/UPLC - Acorda Therapeutics)**
+- MRI, Surgical Robot, Endoscope, CT Scanner, **Pharmaceutical Analytical Testing (HPLC/UPLC - Acorda Therapeutics)**, **Epic EHR System**
 - Mission: Surgical precision vs. cost choice
 - Ethics: Expensive imaging vs. resource allocation
-- **Real-world insight**: HPLC (1966-1967 invention), UPLC (2004), Acorda pharmaceutical development with GMP/GDP protocols, biocompatibility testing, and market validation studies
+- **Real-world insights**: 
+  - HPLC (1966-1967 invention), UPLC (2004), Acorda pharmaceutical development with GMP/GDP protocols
+  - Epic Systems founded by Judy Faulkner in 1979, grew from Madison basement to 325+ million patient records
+  - Epic Hyperspace EHR workflow optimization (300+ decisions, 18 IT analysts, 26 clinical leaders)
 
 ### Era 4: Wearables (2000s-2020s)
 - CGM, **Insulet Omnipod® Insulin Pump**, Smart Inhaler, Fitness Tracker
@@ -120,14 +123,12 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Ethics: Data privacy vs. insurance benefits
 - **Real-world insight**: Insulet Corporation QA testing for 50+ Omnipod specifications, device-to-cloud integration testing, root cause analysis
 
-### Era 5: AI & Future (Today-Tomorrow)
-- **AI Diagnosis & Epic EHR Integration**, Closed-Loop Pancreas, Neural Interface, **PDGFR-Enhanced Cell Therapy (NIH Wound Healing Research)**, Nanorobots
+### Era 5: AI & Future (Today)
+- **AI Diagnostic Assistant**, Closed-Loop Artificial Pancreas, **PDGFR-Enhanced Cell Therapy (NIH Wound Healing Research)**
 - Mission: AI transparency vs. accuracy choice
 - Ethics: Cloud processing vs. local privacy
-- **Real-world insights**: 
-  - Epic Systems founded by Judy Faulkner in 1979, grew from Madison basement to 325+ million patient records
-  - Epic Hyperspace EHR workflow optimization (300+ decisions, 18 IT analysts, 26 clinical leaders)
-  - Northeastern NIH 3T3 fibroblast modification for 25% improved wound healing
+- **Real-world insight**: Northeastern NIH 3T3 fibroblast modification for 25% improved wound healing
+- **Note**: Only real, deployed technologies included - no speculative devices
 
 ## User Journey
 

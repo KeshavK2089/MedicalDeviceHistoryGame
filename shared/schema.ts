@@ -316,6 +316,18 @@ export const eras: Era[] = [
         interactionType: "slider",
         beforeStat: "Unknown drug properties, regulatory uncertainty",
         afterStat: "Molecularly characterized, validated formulations"
+      },
+      {
+        id: "ehr-system",
+        name: "Electronic Health Record (EHR) System",
+        category: "diagnostic",
+        tagline: "Digitizing patient care across healthcare systems",
+        problem: "Paper medical records were fragmented, illegible, and impossible to share between providers. Medication errors, duplicate tests, and missing patient histories led to preventable harm and inefficiencies.",
+        engineering: "Electronic Health Record (EHR) systems digitize patient data - medical history, medications, lab results, imaging, and clinical notes - into centralized databases accessible across care settings. Epic Systems, founded by Judy Faulkner in 1979 in a Madison basement, grew from a single Data General Eclipse computer to managing 325+ million patient records (half of all U.S. patients). The Hyperspace platform connects 300+ workflow optimization decisions across clinical specialties, reducing surgery times and improving patient outcomes through hybrid workflow design. Real-world experience: Epic Systems (2024-2025) demonstrated that managing 18 IT analysts and 26 clinical leaders requires balancing technology capabilities with human expertise through client-facing presentations and agile methodologies.",
+        ethics: "Centralized digital records improve care coordination but create massive privacy risks. Who owns patient data? How do we balance accessibility with security?",
+        interactionType: "comparison",
+        beforeStat: "Paper records, fragmented care, medication errors",
+        afterStat: "Digital records, coordinated care, 325M+ patients"
       }
     ],
     mission: {
@@ -463,19 +475,19 @@ export const eras: Era[] = [
     order: 5,
     color: "purple",
     intro: "The frontier of possibility... Where artificial intelligence meets biology, and devices not only assist but predict, learn, and adapt.",
-    context: "Today and tomorrow: AI-driven decision support systems analyze patient data to recommend treatments. EHR platforms like Epic's Hyperspace optimize clinical workflows across hospitals. Closed-loop devices automatically adjust therapy. Cellular therapies harness genetic modification for regenerative medicine. Speculative technologies promise neural interfaces, nano-robots, and personalized medicine at the molecular level.",
+    context: "Today's reality: AI-driven decision support systems analyze patient data to recommend treatments. Closed-loop devices automatically adjust therapy in real-time. Cellular therapies harness genetic modification for regenerative medicine. These technologies are already transforming patient care and demonstrating measurable improvements in outcomes.",
     devices: [
       {
         id: "ai-diagnosis",
-        name: "AI Diagnostic Assistant & EHR Integration",
+        name: "AI Diagnostic Assistant",
         category: "diagnostic",
-        tagline: "Pattern recognition meets clinical workflow",
-        problem: "Radiologists and pathologists face overwhelming workloads and rare conditions are easily missed. Human pattern recognition has limits. Meanwhile, fragmented healthcare IT systems create inefficiencies across surgery, anesthesia, and clinical workflows.",
-        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision. Integration with Electronic Health Record (EHR) systems enables seamless data flow - Epic Systems, founded by Judy Faulkner in 1979 in a Madison basement, grew from a single computer to managing 325+ million patient records. The Hyperspace platform connects 300+ workflow optimization decisions across clinical specialties, reducing surgery times and improving patient outcomes through hybrid workflow design.",
-        ethics: "AI can perpetuate biases in training data and make inscrutable 'black box' decisions. How do we ensure fairness and accountability? Real-world experience: Epic Systems (2024-2025) demonstrated that managing 18 IT analysts and 26 clinical leaders requires balancing technology capabilities with human expertise. Client-facing presentations and agile methodologies ensure stakeholder consensus on design decisions.",
+        tagline: "Pattern recognition beyond human capability",
+        problem: "Radiologists and pathologists face overwhelming workloads and rare conditions are easily missed. Human pattern recognition has limits, especially with millions of images to review.",
+        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision. FDA-approved AI tools for mammography, retinal imaging, and pathology slides are already in clinical use.",
+        ethics: "AI can perpetuate biases in training data and make inscrutable 'black box' decisions. How do we ensure fairness and accountability?",
         interactionType: "comparison",
-        beforeStat: "10% of cancers missed, fragmented workflows",
-        afterStat: "AI-enhanced detection + optimized EHR workflows"
+        beforeStat: "10% of cancers missed, manual review",
+        afterStat: "AI-enhanced detection, fewer missed diagnoses"
       },
       {
         id: "closed-loop",
@@ -490,18 +502,6 @@ export const eras: Era[] = [
         afterStat: "Automated adjustment, mental freedom"
       },
       {
-        id: "neural-interface",
-        name: "Neural Interface (Speculative)",
-        category: "therapeutic",
-        tagline: "Direct brain-computer communication",
-        problem: "Paralyzed patients cannot communicate or control their environment. Brain signals are locked inside.",
-        engineering: "Electrode arrays implanted in motor cortex detect neural firing patterns. Machine learning decodes intent (move cursor, type words, control prosthetic). Two-way interfaces may eventually provide sensory feedback.",
-        ethics: "Brain-computer interfaces raise profound questions: Can thoughts be hacked? What defines the boundary between human and machine?",
-        interactionType: "toggle",
-        beforeStat: "Complete paralysis, locked-in",
-        afterStat: "Thought-controlled communication and movement"
-      },
-      {
         id: "wound-healing-therapy",
         name: "PDGFR-Enhanced Cell Therapy for Wound Healing",
         category: "therapeutic",
@@ -512,18 +512,6 @@ export const eras: Era[] = [
         interactionType: "comparison",
         beforeStat: "Slow wound healing, chronic ulcers",
         afterStat: "25% faster cellular migration, enhanced regeneration"
-      },
-      {
-        id: "nano-robot",
-        name: "Medical Nanorobot (Speculative)",
-        category: "therapeutic",
-        tagline: "Microscopic surgeons",
-        problem: "Many diseases occur at cellular and molecular scales beyond the reach of current interventions.",
-        engineering: "Nano-scale robots navigate bloodstream using chemical propulsion or magnetic guidance. Target specific cells (cancer, bacteria) for drug delivery or mechanical destruction. Biodegradable materials ensure safe elimination.",
-        ethics: "Autonomous medical robots inside the body raise concerns about control, targeting accuracy, and immune response. Who ensures they stop when the job is done?",
-        interactionType: "slider",
-        beforeStat: "Systemic drugs affect whole body",
-        afterStat: "Targeted cellular-level intervention"
       }
     ],
     mission: {
