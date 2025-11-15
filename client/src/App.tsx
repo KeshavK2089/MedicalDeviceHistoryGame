@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,17 +11,21 @@ import About from "@/pages/About";
 import Achievements from "@/pages/Achievements";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+const base = import.meta.env.BASE_URL;
+
+function AppRouter() {
   return (
-    <Switch>
-      <Route path="/" component={Landing} />
-      <Route path="/timeline" component={Timeline} />
-      <Route path="/era/:slug" component={EraView} />
-      <Route path="/lab" component={LabSandbox} />
-      <Route path="/about" component={About} />
-      <Route path="/achievements" component={Achievements} />
-      <Route component={NotFound} />
-    </Switch>
+    <Router base={base}>
+      <Switch>
+        <Route path="/" component={Landing} />
+        <Route path="/timeline" component={Timeline} />
+        <Route path="/era/:slug" component={EraView} />
+        <Route path="/lab" component={LabSandbox} />
+        <Route path="/about" component={About} />
+        <Route path="/achievements" component={Achievements} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
   );
 }
 
@@ -30,7 +34,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        <AppRouter />
       </TooltipProvider>
     </QueryClientProvider>
   );
