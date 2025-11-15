@@ -1,8 +1,8 @@
-# Chronicles of the Machine
+# Chronicles of the Bioengineer (Version 2.0)
 
 ## Project Overview
 
-An immersive, interactive web-based journey through the evolution of medical device technology. This educational game guides users through five eras of medical innovation, from early diagnostic tools to AI-driven future technologies.
+An immersive, personalized web-based journey through the evolution of medical device technology. Created by Keshav Kotteswaran (M.S. Bioengineering, Northeastern University), this interactive educational experience guides users through five eras of medical innovation, informed by real-world experience in pharmaceutical development, quality assurance testing, and healthcare IT systems.
 
 ## Project Type
 

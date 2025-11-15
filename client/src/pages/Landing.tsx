@@ -36,11 +36,14 @@ export default function Landing() {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center animate-fade-in">
         <div className="mb-8">
+          <div className="text-sm font-medium text-cyan-400 mb-3 tracking-wider uppercase">
+            Presented by Keshav Kotteswaran
+          </div>
           <h1 className="font-grotesk font-bold text-5xl md:text-7xl tracking-tight mb-4 bg-gradient-to-r from-cyan-400 via-purple-400 to-teal-400 bg-clip-text text-transparent" data-testid="text-landing-title">
-            Chronicles of the Machine
+            Chronicles of the Bioengineer
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            An immersive journey through the evolution of medical device technology
+            An interactive journey through medical device innovation, from pharmaceutical development to AI-driven healthcare
           </p>
         </div>
 
