@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Redirect to index.html with path info for client-side routing
+      sessionStorage.redirect = location.pathname;
+      location.replace(
+        location.pathname.split('/').slice(0, -1).join('/') + '/index.html' + location.search
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
