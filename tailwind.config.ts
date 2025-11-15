@@ -81,11 +81,24 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+        cyan: {
+          500: "rgb(6 182 212)",
+          600: "rgb(8 145 178)",
+        },
+        purple: {
+          500: "rgb(168 85 247)",
+          600: "rgb(147 51 234)",
+        },
+        teal: {
+          500: "rgb(20 184 166)",
+          400: "rgb(45 212 191)",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        grotesk: ["Space Grotesk", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -96,10 +109,35 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "slide-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "glow-pulse": {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
+        },
+        "portal-spin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        "typewriter": {
+          from: { width: "0" },
+          to: { width: "100%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out",
+        "slide-up": "slide-up 0.6s ease-out",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "portal-spin": "portal-spin 20s linear infinite",
+        "typewriter": "typewriter 2s steps(40) forwards",
       },
     },
   },
