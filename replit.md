@@ -96,32 +96,37 @@ Static website built with React + Vite, deployable to GitHub Pages
 - Live URL: `https://USERNAME.github.io/MedicalDeviceHistoryGame/`
 - See `QUICK_DEPLOY_README.md` for 5-minute deployment guide
 
-## Content
+## Content (V2.0 - Personalized with Real-World Experience)
 
 ### Era 1: Foundations (1800s-1900s)
-- Stethoscope, X-Ray, Thermometer
+- Stethoscope, X-Ray, Thermometer, Blood Pressure Cuff, **Pharmaceutical Analytical Testing (UPLC/HPLC - Acorda Therapeutics)**
 - Mission: Device development sequencing
 - Ethics: Radiation safety vs. diagnostic benefit
+- **Real-world insight**: Acorda pharmaceutical development with GMP/GDP protocols, biocompatibility testing, and market validation studies
 
 ### Era 2: Implantables (1960s-1980s)
-- Pacemaker, Hip Replacement, Cochlear Implant
+- Pacemaker, Hip Replacement, Cochlear Implant, ICD
 - Mission: Pacemaker rate optimization slider
 - Ethics: Battery life vs. device size trade-offs
 
 ### Era 3: Imaging & Robotics (1980s-2000s)
-- MRI, Surgical Robot, Endoscope
+- MRI, Surgical Robot, Endoscope, CT Scanner
 - Mission: Surgical precision vs. cost choice
 - Ethics: Expensive imaging vs. resource allocation
 
 ### Era 4: Wearables (2000s-2010s)
-- CGM, Insulin Pump, Smart Inhaler
+- CGM, **Insulet Omnipod® Insulin Pump**, Smart Inhaler, Fitness Tracker
 - Mission: Insulin dosing slider
 - Ethics: Data privacy vs. insurance benefits
+- **Real-world insight**: Insulet Corporation QA testing for 50+ Omnipod specifications, device-to-cloud integration testing, root cause analysis
 
 ### Era 5: AI & Future (Today-Tomorrow)
-- AI Diagnosis, Closed-Loop Pancreas, Neural Interface
+- **AI Diagnosis & Epic EHR Integration**, Closed-Loop Pancreas, Neural Interface, **PDGFR-Enhanced Cell Therapy (NIH Wound Healing Research)**, Nanorobots
 - Mission: AI transparency vs. accuracy choice
 - Ethics: Cloud processing vs. local privacy
+- **Real-world insights**: 
+  - Epic Systems Hyperspace EHR workflow optimization (300+ decisions, 18 IT analysts, 26 clinical leaders)
+  - Northeastern NIH 3T3 fibroblast modification for 25% improved wound healing
 
 ## User Journey
 

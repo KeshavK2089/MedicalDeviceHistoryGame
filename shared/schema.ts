@@ -68,7 +68,7 @@ export const eras: Era[] = [
     order: 1,
     color: "cyan",
     intro: "The dawn of modern medicine... Where curious minds wielded simple tools to peer into the human body for the first time.",
-    context: "In the 19th and early 20th centuries, physicians relied on basic instruments to diagnose and understand disease. These foundational tools—stethoscopes, thermometers, and early X-rays—transformed medicine from guesswork to science.",
+    context: "In the 19th and early 20th centuries, physicians relied on basic instruments to diagnose and understand disease. From stethoscopes to modern pharmaceutical analytical testing, these foundational tools transformed medicine from guesswork to precision science. This era laid the groundwork for rigorous testing, validation, and regulatory compliance—principles that guide medical device development today.",
     devices: [
       {
         id: "stethoscope",
@@ -117,6 +117,18 @@ export const eras: Era[] = [
         interactionType: "comparison",
         beforeStat: "Hypertension invisible, often fatal",
         afterStat: "Quantitative pressure monitoring"
+      },
+      {
+        id: "pharmaceutical-analyzer",
+        name: "Pharmaceutical Analytical Testing (UPLC/HPLC)",
+        category: "diagnostic",
+        tagline: "Molecular precision for drug development",
+        problem: "Drug formulations require precise characterization to ensure safety, efficacy, and stability. Without analytical validation, pharmaceutical products cannot meet regulatory standards or reach patients.",
+        engineering: "Ultra-Performance Liquid Chromatography (UPLC) and High-Performance Liquid Chromatography (HPLC) separate drug compounds and measure their properties with molecular precision. Spray-dried formulations are analyzed for powder stability, biocompatibility, and compatibility. GMP/GDP laboratory protocols ensure reproducible results. ACI-8 analysis characterizes formulation properties to guide development decisions. Real-world experience: Acorda Therapeutics (2022) demonstrated that analytical development is critical for pharmaceutical launches—from market validation studies to MannKind collaboration biocompatibility testing.",
+        ethics: "Rigorous testing delays drug availability but ensures patient safety. How do we balance speed-to-market with thoroughness in life-saving therapeutics?",
+        interactionType: "slider",
+        beforeStat: "Unknown drug properties, regulatory uncertainty",
+        afterStat: "Molecularly characterized, validated formulations"
       }
     ],
     mission: {
@@ -375,15 +387,15 @@ export const eras: Era[] = [
       },
       {
         id: "insulin-pump",
-        name: "Insulin Pump",
+        name: "Insulet Omnipod® Insulin Pump",
         category: "therapeutic",
-        tagline: "Automated insulin delivery",
-        problem: "Multiple daily injections (MDI) provided imprecise insulin dosing and inflexible schedules. Patients struggled to match insulin to meals and activity.",
-        engineering: "Battery-powered pump delivers precise micro-doses of insulin via subcutaneous catheter. Programmable basal rates mimic natural insulin patterns. Bolus calculator factors in carbs, current glucose, and insulin on board.",
-        ethics: "Pumps can malfunction, causing life-threatening over- or under-delivery. Should devices have fail-safes, even if they reduce user control?",
+        tagline: "Tubeless automated insulin delivery",
+        problem: "Multiple daily injections (MDI) provided imprecise insulin dosing and inflexible schedules. Traditional tubed pumps were cumbersome and conspicuous. Patients struggled to match insulin to meals and activity.",
+        engineering: "Tubeless, wearable pod delivers precise micro-doses of insulin via integrated subcutaneous cannula. Programmable basal rates mimic natural insulin patterns. Wireless Personal Diabetes Manager (PDM) controls dosing and calculates boluses based on carbs, current glucose, and insulin on board. QA testing validates 50+ performance specifications including device-to-cloud data transfer protocols to ensure FDA compliance and patient safety.",
+        ethics: "Pumps can malfunction, causing life-threatening over- or under-delivery. Rigorous systems integration testing and root cause analysis of anomalies are critical. Should devices have fail-safes, even if they reduce user control? Real-world experience: Insulet Corporation (2023) demonstrated that comprehensive QA testing—from bench validation to cloud connectivity—is essential for medical device reliability.",
         interactionType: "comparison",
         beforeStat: "4+ daily injections, rigid schedule",
-        afterStat: "Continuous micro-dosing, flexible lifestyle"
+        afterStat: "Tubeless micro-dosing, flexible lifestyle"
       },
       {
         id: "smart-inhaler",
@@ -451,19 +463,19 @@ export const eras: Era[] = [
     order: 5,
     color: "purple",
     intro: "The frontier of possibility... Where artificial intelligence meets biology, and devices not only assist but predict, learn, and adapt.",
-    context: "Today and tomorrow: AI-driven decision support systems analyze patient data to recommend treatments. Closed-loop devices automatically adjust therapy. Speculative technologies promise neural interfaces, nano-robots, and personalized medicine at the molecular level.",
+    context: "Today and tomorrow: AI-driven decision support systems analyze patient data to recommend treatments. EHR platforms like Epic's Hyperspace optimize clinical workflows across hospitals. Closed-loop devices automatically adjust therapy. Cellular therapies harness genetic modification for regenerative medicine. Speculative technologies promise neural interfaces, nano-robots, and personalized medicine at the molecular level.",
     devices: [
       {
         id: "ai-diagnosis",
-        name: "AI Diagnostic Assistant",
+        name: "AI Diagnostic Assistant & EHR Integration",
         category: "diagnostic",
-        tagline: "Pattern recognition beyond human capacity",
-        problem: "Radiologists and pathologists face overwhelming workloads and rare conditions are easily missed. Human pattern recognition has limits.",
-        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision.",
-        ethics: "AI can perpetuate biases in training data and make inscrutable 'black box' decisions. How do we ensure fairness and accountability?",
+        tagline: "Pattern recognition meets clinical workflow",
+        problem: "Radiologists and pathologists face overwhelming workloads and rare conditions are easily missed. Human pattern recognition has limits. Meanwhile, fragmented healthcare IT systems create inefficiencies across surgery, anesthesia, and clinical workflows.",
+        engineering: "Deep learning neural networks trained on millions of images detect patterns humans miss. Algorithms flag suspicious areas, quantify risk, and suggest differential diagnoses. Human physician makes final decision. Integration with Electronic Health Record (EHR) systems enables seamless data flow—Epic Systems' Hyperspace platform connects 300+ workflow optimization decisions across clinical specialties, reducing surgery times and improving patient outcomes through hybrid workflow design.",
+        ethics: "AI can perpetuate biases in training data and make inscrutable 'black box' decisions. How do we ensure fairness and accountability? Real-world experience: Epic Systems (2024-2025) demonstrated that managing 18 IT analysts and 26 clinical leaders requires balancing technology capabilities with human expertise. Client-facing presentations and agile methodologies ensure stakeholder consensus on design decisions.",
         interactionType: "comparison",
-        beforeStat: "10% of cancers missed on screening",
-        afterStat: "AI detects subtle early-stage patterns"
+        beforeStat: "10% of cancers missed, fragmented workflows",
+        afterStat: "AI-enhanced detection + optimized EHR workflows"
       },
       {
         id: "closed-loop",
@@ -488,6 +500,18 @@ export const eras: Era[] = [
         interactionType: "toggle",
         beforeStat: "Complete paralysis, locked-in",
         afterStat: "Thought-controlled communication and movement"
+      },
+      {
+        id: "wound-healing-therapy",
+        name: "PDGFR-Enhanced Cell Therapy for Wound Healing",
+        category: "therapeutic",
+        tagline: "Accelerating tissue regeneration at the cellular level",
+        problem: "Chronic wounds affect millions of patients—diabetic ulcers, burns, and surgical incisions heal slowly or not at all. Traditional treatments are passive; cells need active enhancement to optimize migration and proliferation.",
+        engineering: "NIH 3T3 fibroblasts are modified via PDGFR (Platelet-Derived Growth Factor Receptor) gene transfection to enhance cellular mobility. Chemotactic analysis measures migration rates and validates 25% improvement in wound healing efficiency. Statistical modeling confirms optimization of fibroblast migration—critical for tissue repair and regeneration. Experimental protocols combine molecular biology, bioimaging, and quantitative analysis. Real-world experience: Northeastern University Capstone (2023-2024) developed comprehensive experimental frameworks showing that targeted genetic modifications can accelerate healing at the cellular level.",
+        ethics: "Genetic modification of cells raises questions about long-term safety and unintended consequences. How do we ensure enhanced cells stop when healing is complete?",
+        interactionType: "comparison",
+        beforeStat: "Slow wound healing, chronic ulcers",
+        afterStat: "25% faster cellular migration, enhanced regeneration"
       },
       {
         id: "nano-robot",

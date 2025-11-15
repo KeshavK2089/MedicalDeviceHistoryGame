@@ -43,7 +43,7 @@ export default function Landing() {
             Chronicles of the Bioengineer
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            An interactive journey through medical device innovation, from pharmaceutical development to AI-driven healthcare
+            An interactive journey through medical device innovation—featuring real-world insights from Insulet Omnipod QA testing, Acorda pharmaceutical development, Epic EHR systems, and NIH wound healing research
           </p>
         </div>
 
